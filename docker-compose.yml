@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto:2.0
+    container_name: poseidoneye-mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: unless-stopped
+    networks:
+      - poseidoneye-network
+
+  engine-simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.simulator
+    container_name: poseidoneye-simulator
+    depends_on:
+      - mqtt-broker
+    environment:
+      - MQTT_BROKER=mqtt-broker
+      - MQTT_PORT=1883
+    networks:
+      - poseidoneye-network
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: poseidoneye-dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mqtt-broker
+    environment:
+      - MQTT_BROKER=mqtt-broker
+      - MQTT_PORT=1883
+    networks:
+      - poseidoneye-network
+    restart: unless-stopped
+
+networks:
+  poseidoneye-network:
+    driver: bridge

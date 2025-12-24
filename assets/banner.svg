@@ -1,0 +1,49 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#001529;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#003366;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="400" fill="url(#grad1)" />
+  
+  <!-- Abstract Digital Sea Patterns -->
+  <path d="M0 300 Q 300 250 600 300 T 1200 300" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.3">
+    <animate attributeName="d" dur="10s" repeatCount="indefinite"
+      values="M0 300 Q 300 250 600 300 T 1200 300; M0 300 Q 300 350 600 300 T 1200 300; M0 300 Q 300 250 600 300 T 1200 300" />
+  </path>
+  <path d="M0 320 Q 300 270 600 320 T 1200 320" stroke="#00ffcc" stroke-width="0.5" fill="none" opacity="0.2" />
+
+  <!-- Trident Icon (Stylized) -->
+  <g transform="translate(100, 100) scale(1.5)" filter="url(#glow)">
+    <path d="M40 0 L40 100 M20 20 L20 60 Q20 80 40 80 Q60 80 60 60 L60 20 M10 40 L30 40 M50 40 L70 40" 
+          stroke="#00d4ff" stroke-width="4" fill="none" stroke-linecap="round" />
+    <circle cx="40" cy="110" r="5" fill="#00ffcc" />
+  </g>
+
+  <!-- Title Text -->
+  <text x="300" y="200" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#ffffff" filter="url(#glow)">
+    POSEIDON<tspan fill="#00d4ff">EYE</tspan>
+  </text>
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="24" fill="#00ffcc" letter-spacing="5">
+    AI-POWERED MARINE INTELLIGENCE
+  </text>
+
+  <!-- Digital HUD Elements -->
+  <circle cx="1050" cy="200" r="80" stroke="#00d4ff" stroke-width="2" fill="none" stroke-dasharray="10 5" opacity="0.5" />
+  <circle cx="1050" cy="200" r="60" stroke="#00ffcc" stroke-width="1" fill="none" opacity="0.8" />
+  <path d="M1050 140 L1050 160 M1050 240 L1050 260 M990 200 L1010 200 M1090 200 L1110 200" stroke="#ffffff" stroke-width="2" />
+  
+  <!-- Scanning Line -->
+  <line x1="970" y1="200" x2="1130" y2="200" stroke="#ff3366" stroke-width="1" opacity="0.7">
+    <animate attributeName="y1" values="120;280;120" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="y2" values="120;280;120" dur="4s" repeatCount="indefinite" />
+  </line>
+</svg>
