@@ -23,35 +23,91 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for premium look
+# Custom CSS for premium "Glassmorphism" look
 st.markdown("""
 <style>
-    .main {
-        background-color: #0a0e27;
+    /* Global Background */
+    .stApp {
+        background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        color: #ffffff;
     }
+    
+    /* Metrics Cards (Glassmorphism) */
     .stMetric {
-        background-color: #1a1f3a;
-        padding: 15px;
-        border-radius: 10px;
-        border-left: 4px solid #00d4ff;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        transition: transform 0.3s ease;
     }
+    .stMetric:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.5);
+    }
+    
+    /* Titles and Headers */
     h1 {
         color: #00d4ff;
-        text-shadow: 0 0 10px #00d4ff;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        text-transform: uppercase;
     }
-    .alert-critical {
-        background-color: #ff3366;
+    h2, h3 {
+        color: #e0e0e0;
+        font-weight: 600;
+    }
+    
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: rgba(10, 14, 39, 0.95) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Buttons */
+    .stButton > button {
+        background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
         color: white;
-        padding: 10px;
-        border-radius: 5px;
+        border: none;
+        border-radius: 25px;
         font-weight: bold;
+        padding: 0.5rem 2rem;
+        transition: all 0.3s ease;
+    }
+    .stButton > button:hover {
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
+        transform: scale(1.05);
+    }
+    
+    /* Alert Boxes */
+    .alert-critical {
+        background: rgba(255, 51, 102, 0.2);
+        border: 1px solid #ff3366;
+        color: #ff99aa;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+        animation: pulse 2s infinite;
     }
     .alert-warning {
-        background-color: #ffaa00;
-        color: black;
-        padding: 10px;
-        border-radius: 5px;
-        font-weight: bold;
+        background: rgba(255, 170, 0, 0.2);
+        border: 1px solid #ffaa00;
+        color: #ffcc00;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
     }
 </style>
 """, unsafe_allow_html=True)
